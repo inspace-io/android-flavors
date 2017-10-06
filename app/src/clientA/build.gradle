@@ -1,0 +1,25 @@
+android {
+    signingConfigs {
+        clientA {
+            storeFile file('./keys/clientA.jks')
+            storePassword System.getenv("CLIENTA_KEYSTORE_PASS")
+            keyAlias System.getenv("CLIENTA_KEYALIAS")
+            keyPassword System.getenv("CLIENTA_KEY_PASS")
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        def clientASigningConfig = signingConfigs.clientA
+
+        clientA {
+            dimension "default"
+            applicationId "io.inspace.app.clientA"
+            versionName "-clientA"
+            buildConfigField "String", "PRODUCT_FLAVOR", "\"clientA\""
+
+            signingConfig clientASigningConfig
+        }
+    }
+}
