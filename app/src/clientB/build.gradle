@@ -8,8 +8,6 @@ android {
         }
     }
 
-    flavorDimensions "default"
-
     productFlavors {
         def clientBSigningConfig = signingConfigs.clientB
 
